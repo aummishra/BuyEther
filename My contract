@@ -2,17 +2,17 @@ pragma solidity ^0.5.1;
 
 contract MyContract{
  
- address payable wallet;
+ address payable wallet; // creates a variable of type address payble and stores it inside wallet
  mapping (address => uint256) public Balance;
  
-        constructor(address payable _wallet) public{
+        constructor(address payable _wallet) public{ //constructor is called once only when then app is deployed so it stores the wallet as the wallet of user which deployed it.
             wallet = _wallet;
         }
     
      function buy_Token() public payable{
          Balance[msg.sender] =  Balance[msg.sender] + 1; //buy a token 
          //send ether to the wallet
-         wallet.transfer(msg.value);
+         wallet.transfer(msg.value); // every time someone buys a token it gets stored in the wallet of the user that deployed the app
          
      }
 }
